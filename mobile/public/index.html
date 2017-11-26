@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+
+		<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+		<title>Tellum</title>
+	</head>
+
+	<body>
+
+		<header>
+			<img src="/assets/img/logo.svg" alt="" id="logo">
+		</header>
+
+		<main>
+			<button id="record">record audio</button>
+			<button disabled="true">listen</button>
+			<button id="consent">Allow Location</button>
+			<canvas id="particles" width="100vw" height="100vh"></canvas>
+			<p id="meta"></p>
+			<aside id="info"></aside>
+		</main>
+	
+		<section class="main-controls">
+			<canvas class="visualizer" height="60px"></canvas>
+			<div id="buttons">
+				<button class="stop">Stop</button>
+			</div>
+		</section>
+
+		<section class="sound-clips">
+		</section>
+
+		<script src="assets/js/recorder.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.min.js"
+			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			crossorigin="anonymous"></script>
+		<script src="assets/js/app.min.js"></script>
+	</body>
+</html>

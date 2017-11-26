@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Audio download test 2</title>
+		<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+		<style>
+			#source {
+				color: white;
+				font-family: monospace;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="wrapper">
+			<audio id="audio" controls></audio>
+			<input id="val" type="number">
+			<button id="fetch">fetch source</button>
+			<h4 id="source">Source: </h4>
+		</div>
+
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.min.js"
+			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			crossorigin="anonymous"></script>
+		<script>
+			let base64audio = 'data:'
+
+			function dataURItoBlob(dataURI) {
+				// Split the input to get the mime-type and the data itself
+				dataURI = dataURI.split( ',' );
+
+				// First part contains data:audio/ogg;base64 from which we only need audio/ogg
+				var type = dataURI[ 0 ].split( ':' )[ 1 ].split( ';' )[ 0 ];
+
+				// Second part is the data itself and we decode it
+				var byteString = atob( dataURI[ 1 ] );
+				var byteStringLen = byteString.length;
+
+				// Create ArrayBuffer with the byte string and set the length to it
+				var ab = new ArrayBuffer( byteStringLen );
+
+				// Create a typed array out of the array buffer representing each character from as a 8-bit unsigned integer
+				var intArray = new Uint8Array( ab );
+				for ( var i = 0; i < byteStringLen; i++ ) {
+					intArray[ i ] = byteString.charCodeAt( i );
+				}
+
+				return new Blob( [ intArray ], {type: type} );
+			}
+
+			
+
+			$('#fetch').on('click', function () {
+				let val = document.getElementById('val').value;
+				axios.get('https://localhost/tellum/api.php/sounds/' + val)
+				.then(response => {
+					console.log(response);
+
+					base64audio += response.data.sound_type + ';base64,' + response.data.sound;
+					$('#source').text('Source: ' + base64audio);
+
+					var audio = document.getElementById('audio');
+					var audioURL = URL.createObjectURL(dataURItoBlob(base64audio));
+					audio.src = audioURL;
+					audio.load();
+				})
+			})
+
+		</script>
+
+	</body>
+</html>

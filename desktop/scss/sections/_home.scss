@@ -1,0 +1,6 @@
+#map {
+	width: 100vw;
+	height: calc(100vh - #{$navWidth} * 2);
+	position: fixed;
+	top: $navWidth;
+}
