@@ -12,34 +12,30 @@
 	<body>
 
 		<header>
-			<img src="/assets/img/logo.svg" alt="" id="logo">
+			<img src="assets/img/logo.svg" alt="tellum logo" id="logo">
+			<canvas id="visualizer" height="60px"></canvas>
 		</header>
 
-		<main>
+		<main class="main">
 			<button id="record">record audio</button>
 			<button disabled="true">listen</button>
-			<button id="consent">Allow Location</button>
+<!-- 			<button id="consent">Allow Location</button> -->
+<section class="sound-clips">
+</section>
 			<canvas id="particles" width="100vw" height="100vh"></canvas>
+			
 			<p id="meta"></p>
-			<aside id="info"></aside>
+			<aside id="info">
+				<img src="assets/img/info.svg" alt="information icon" id="info-icon">
+			</aside>
 		</main>
-	
-		<section class="main-controls">
-			<canvas class="visualizer" height="60px"></canvas>
-			<div id="buttons">
-				<button class="stop">Stop</button>
-			</div>
-		</section>
 
-		<section class="sound-clips">
-		</section>
 
-		<script src="assets/js/recorder.js"></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script
 			src="https://code.jquery.com/jquery-3.2.1.min.js"
 			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 			crossorigin="anonymous"></script>
-		<script src="assets/js/app.min.js"></script>
+		<script src="assets/js/app.js"></script>
 	</body>
 </html>
