@@ -1,0 +1,51 @@
+main {
+	width: 100vw;
+	height: calc(100vh - #{$navWidth} * 2);
+	position: fixed;
+	top: $navWidth;
+}
+
+#particles {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+}
+
+#record {
+	position: fixed;
+	top: 50vh;
+	width: 100%;
+	background: transparent;
+	color: $c-white;
+	text-transform: capitalize;
+	font-family: monospace;
+	-webkit-transform: translateY(-70%);
+	   -moz-transform: translateY(-70%);
+	    -ms-transform: translateY(-70%);
+	     -o-transform: translateY(-70%);
+	        transform: translateY(-70%);
+	cursor: pointer;
+	z-index: 200;
+	&.rec {
+		color: $c-red;
+	}
+	&:focus {
+		border: none;
+	}
+}
+
+#listen {
+
+}
+
+#meta {
+	font-family: monospace;
+	position: fixed;
+	bottom: $navWidth;
+	color: rgba($c-white, 0.8);
+	left: 10px;
+	font-size: 12px;
+}
