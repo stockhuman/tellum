@@ -57,7 +57,7 @@
 	function Emitter(x, y) {
 		this.position = { x: x, y: y};
 		this.radius = 60;
-		this.count = 100; // was 3000
+		this.count = 1000; // was 3000
 		this.particles = [];
 		
 		for(var i=0; i< this.count; i ++ ){
