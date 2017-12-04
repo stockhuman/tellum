@@ -1,6 +1,30 @@
 #map {
+	// width: 80vw;
 	width: 100vw;
-	height: calc(100vh - #{$navWidth} * 2);
+	height: 100vh;
 	position: fixed;
 	top: $navWidth;
+	// left: 20vw;
+	left: 0;
+	z-index: 1;
+}
+
+.meta {
+	display: none;
+	background: $c-blue;
+	position: fixed;
+	padding: $u;
+	top: $navWidth;
+	height: calc(100vh - #{$navWidth});
+	width: 20vw;
+	z-index: 2;
+	box-shadow: 1px 30px 43px -11px rgba(0,0,0,0.75);
+	color: $c-white;
+
+	h2 {
+		color: $c-yellow;
+		font-size: $u * 1.2;
+		letter-spacing: 1px;
+	}
+
 }

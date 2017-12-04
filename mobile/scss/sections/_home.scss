@@ -5,7 +5,31 @@ main {
 	top: $navWidth;
 }
 
-#particles {
+.buttons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	flex-flow: column;
+
+	button {
+		border-radius: 50px;
+		background: $c-grey;
+		color: $c-white;
+		text-transform: capitalize;
+		font-family: monospace;
+		cursor: pointer;
+		&:focus {
+			border: none;
+		}
+	}
+}
+
+#visualizer {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -15,31 +39,15 @@ main {
 }
 
 #record {
-	position: fixed;
+	// position: fixed;
 	top: 50vh;
-	width: 100%;
-	background: transparent;
-	color: $c-white;
-	text-transform: capitalize;
-	font-family: monospace;
-	-webkit-transform: translateY(-70%);
-	   -moz-transform: translateY(-70%);
-	    -ms-transform: translateY(-70%);
-	     -o-transform: translateY(-70%);
-	        transform: translateY(-70%);
-	cursor: pointer;
+	left: 50%;
 	z-index: 200;
 	&.rec {
 		color: $c-red;
 	}
-	&:focus {
-		border: none;
-	}
 }
 
-#listen {
-
-}
 
 #meta {
 	font-family: monospace;
