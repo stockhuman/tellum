@@ -2,7 +2,9 @@
 	display: block;
 	width: 1rem;
 	height: 1rem;
-	background: $c-yellow;
+	background: rgba($c-yellow, 0.7);
+	border: 1px solid $c-blue
+	;
 	border-radius: 50%;
 	box-shadow: 0px 37px 53px -11px rgba(99,99,99,1);
 }

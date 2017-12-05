@@ -1,0 +1,197 @@
+// .logo, .nav-trigger {
+// 	position: fixed;
+// 	display: inline-block;
+// }
+
+// .nav-trigger {
+// 	top: 18px;
+// 	right: 5%;
+// 	height: 44px;
+// 	width: 44px;
+// 	z-index: 400;
+// 	/* image replacement */
+// 	overflow: hidden;
+// 	text-indent: 100%;
+// 	white-space: nowrap;
+
+// 	.icon {
+// 		/* icon created in CSS */
+// 		position: absolute;
+// 		display: inline-block;
+// 		width: 18px;
+// 		height: 3px;
+// 		background-color: $c-yellow;
+// 		z-index: 10;
+
+// 		&::before, &:after {
+// 			/* upper and lower lines of the menu icon */
+// 			position: absolute;
+// 			top: 0;
+// 			right: 0;
+// 			width: 100%;
+// 			height: 100%; 
+// 			background-color: $c-yellow;
+
+// 			/* Force Hardware Acceleration in WebKit */
+// 			transform: translateZ(0);
+// 			-webkit-backface-visibility: hidden;
+// 			backface-visibility: hidden;
+
+// 			/* apply transition to transform property */
+// 			-webkit-transition: -webkit-transform .3s;
+// 			-moz-transition: -moz-transform .3s;
+// 			transition: transform .3s;
+// 		}
+
+// 		&::before {
+// 			transform: translateY(-6px) rotate(0deg);
+// 		}
+
+// 		&::after {
+// 			transform: translateY(6px) rotate(0deg);
+// 		}
+// 	}
+
+// 	&::before, &::after {
+// 		/* 2 rounded colored backgrounds for the menu icon */
+// 		position: absolute;
+// 		top: 0;
+// 		left: 0;
+// 		border-radius: 50%;
+// 		height: 100%;
+// 		width: 100%;
+// 		/* Force Hardware Acceleration in WebKit */
+// 		transform: translateZ(0);
+// 		-webkit-backface-visibility: hidden;
+// 		backface-visibility: hidden;
+// 	}
+
+// 	&::before {
+// 		background-color: $c-blue;
+// 		transform: scale(1);
+// 		transition-duration: .3s;
+// 		transition-delay: .4s;
+// 	}
+
+// 	&::after {
+// 		background-color: $c-blue;
+// 		transform: scale(0);
+// 		transition-duration: 0s;
+// 		transition-delay: 0s;
+// 	}
+
+// 	&.close-nav::before {
+// 		transform: scale(0);
+// 	}
+
+// 	&.close-nav::after {
+// 		/* user clicks on the .nav-trigger element - 2nd rounded background appears */
+// 		transform: scale(1);
+// 		transition-duration: .3s;
+// 		transition-delay:.4s;
+// 	}
+
+// 	&.close-nav .icon {
+// 		/* user clicks on the .nav-trigger element - transform the icon */
+// 		background-color: rgba($c-yellow, 0);
+
+// 		&::before, &::after {
+// 			background-color: rgba($c-yellow, 1);
+// 		}
+		
+// 		&::before {
+// 			transform: translateY(0) rotate(45deg);
+// 		}
+
+// 		&::after {
+// 			transform: translateY(0) rotate(-45deg);
+// 		}
+// 	}
+// }
+
+// .primary-nav {
+// 	/* by default it's hidden */
+// 	position: fixed;
+// 	left: 0;
+// 	top: 0;
+// 	height: 100%;
+// 	width: 100%;
+// 	padding: 80px 5%;
+// 	z-index: 400;
+// 	background-color: $c-yellow;
+// 	overflow: auto;
+// 	-webkit-overflow-scrolling: touch;
+// 	visibility: hidden;
+// 	opacity: 0;
+// 	transition: visibility 0s, opacity .3s;
+
+// 	li {
+// 		margin: 1.6em 0;
+// 		text-align: center;
+// 		text-transform: capitalize;
+// 	}
+
+// 	a {
+// 		transition: color .2s;
+
+// 		.no-touch &:hover {
+// 			color: $c-yellow;
+// 		}
+// 	}
+
+// 	&.fade-in {
+// 		/* navigation visible at the end of the circle animation */
+// 		visibility: visible;
+// 		opacity: 1;
+// 	}
+
+// }
+
+// .overlay-nav, .overlay-content {
+// 	position: fixed;
+// 	top: 18px;
+// 	right: 5%;
+// 	height: 4px;
+// 	width: 4px;
+// 	transform: translateX(-20px) translateY(20px);
+
+// 	span {
+// 		display: inline-block;
+// 		position: absolute;
+// 		border-radius: 50%;
+// 		/* Force Hardware Acceleration in WebKit */
+// 		transform: translateZ(0);
+// 		-webkit-backface-visibility: hidden;
+// 		backface-visibility: hidden;
+// 		will-change: transform;
+// 		transform-origin: 50% 50%;
+// 		transform: scale(0);
+// 	}
+
+// 	&.is-hidden {
+// 		/* background fades out at the end of the animation */
+// 		opacity: 0;
+// 		visibility: hidden;
+// 		-webkit-transition: opacity .3s 0s, visibility 0s .3s;
+// 		-moz-transition: opacity .3s 0s, visibility 0s .3s;
+// 		transition: opacity .3s 0s, visibility 0s .3s;
+// 	}
+// }
+
+// .overlay-nav {
+// 	/* main rounded colored bg 1 */
+// 	z-index: 500;
+
+// 	span {
+// 		background-color: $c-blue;
+// 	}
+// }
+
+// .overlay-content {
+// 	/* main rounded colored bg 2 */
+// 	z-index: 200;
+
+// 	span {
+// 		background-color: $c-white;
+// 	}
+// }

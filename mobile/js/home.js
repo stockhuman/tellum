@@ -25,7 +25,6 @@ const audioCtx = new (window.AudioContext || webkitAudioContext)()
 
 
 $(document).ready(function () {
-	$('#listen').hide();
 	geolocate()
 })
 
