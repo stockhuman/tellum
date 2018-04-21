@@ -99,9 +99,13 @@ main {
 
 .datalog {
 	position: fixed;
-	top: 4rem;
+	top: 6rem;
 	overflow: hidden;
 	height: 30%;
 	width: 80%;
 	left: 20px;
+	color: $c-white;
+	font-family: monospace;
+	font-size: 10px;
+	opacity: 0.8;
 }
