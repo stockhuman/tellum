@@ -1,0 +1,26 @@
+#info {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+	background: $c-yellow;
+	padding: 10em 2em;
+	transition: .5s ease transform;
+	transform: translate3D(100%, 0, 0);
+	&.info-hidden {
+		transform: translate3D(0, 0, 0);
+	}
+}
+
+#info-toggle {
+	position: fixed;
+	bottom: 10px;
+	right: 18px;
+	border: 2px solid $c-white;
+	background: transparent;
+	color: $c-white;
+	padding: 8px 12px 8px 12px;
+	z-index: 3;
+}
+

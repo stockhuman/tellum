@@ -1,0 +1,107 @@
+main {
+	width: 100vw;
+	height: calc(100vh - #{$navWidth} * 2);
+	position: fixed;
+	top: $navWidth;
+}
+
+.buttons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	flex-flow: column;
+
+	button {
+		border-radius: 50px;
+		background: $c-grey;
+		color: $c-white;
+		text-transform: capitalize;
+		font-family: monospace;
+		cursor: pointer;
+		&:focus {
+			border: none;
+		}
+	}
+}
+
+#visualizer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+}
+
+#record {
+	// position: fixed;
+	top: 50vh;
+	left: 50%;
+	z-index: 200;
+	&.rec {
+		color: $c-red;
+	}
+}
+
+
+#meta {
+	font-family: monospace;
+	position: fixed;
+	bottom: $navWidth /3;
+	color: rgba($c-white, 0.8);
+	left: 20px;
+	font-size: 12px;
+}
+
+#loader {
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	background: $c-yellow;
+	z-index: 4;
+	transition: .5s ease transform;
+	.loader-info {
+		top: 40%;
+		position: fixed;
+		padding: 3em;
+		margin: 0 auto;
+	}
+	&.loaded {
+		transform: translate3D(-100%, 0, 0);
+	}
+}
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4,end) 900ms infinite;
+  animation: ellipsis steps(4,end) 900ms infinite;
+  content: "\2026"; /* ascii code for the ellipsis character */
+  width: 0px;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 1.25em;
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 1.25em;
+  }
+}
+
+.datalog {
+	position: fixed;
+	top: 4rem;
+	overflow: hidden;
+	height: 30%;
+	width: 80%;
+	left: 20px;
+}

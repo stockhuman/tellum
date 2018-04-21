@@ -32,22 +32,26 @@
 			<img src="assets/img/logo.svg" alt="tellum logo" id="logo">
 		</header>
 
-		<main class="main content">
-			<div class="buttons">
-				<button id="record">record</button>
-				<button id="listen" style="display: none">listen</button>
-			</div>
-
-			<canvas id="visualizer" width="100vw" height="100vh"></canvas>
-			
-			<p id="meta"></p>
+		<main>
+			<button id="fetch">Get items</button>
+			<ul id="list"></ul>
 		</main>
 
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		<script
-			src="https://code.jquery.com/jquery-3.2.1.min.js"
-			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-			crossorigin="anonymous"></script>
-		<script src="assets/js/app.min.js"></script>
+		<script>
+			const server = 'https://tellum.fun/api.php/sounds/'
+		const list = document.getElementById('list')
+			document.getElementById('fetch').addEventListener('click', () => {
+				axios.get(server + '?columns=id').then(response => {
+					// retrieve entire list
+					let all = response.data.sounds.records
+					let selected = all[0][0]
+
+					all.forEach(function (item, index, all) {
+						list.appendChild('<li>')
+					})
+				})
+			})
+		</script>
 	</body>
 </html>

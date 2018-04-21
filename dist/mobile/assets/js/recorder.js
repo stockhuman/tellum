@@ -57,7 +57,7 @@ if (navigator.mediaDevices.getUserMedia) {
 			var clipLabel = document.createElement('p');
 			var audio = document.createElement('audio');
 			var deleteButton = document.createElement('button');
-		 
+
 			clipContainer.classList.add('clip');
 			audio.setAttribute('controls', '');
 			deleteButton.textContent = 'Delete';
@@ -162,8 +162,8 @@ function visualize(stream) {
 		var x = 0;
 
 
-		for(var i = 0; i < bufferLength; i++) {
- 
+		for (var i = 0; i < bufferLength; i++) {
+
 			var v = dataArray[i] / 128.0;
 			var y = v * HEIGHT/2;
 
