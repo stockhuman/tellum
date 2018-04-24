@@ -25,6 +25,17 @@
 		<link rel="manifest" href="..assets/img/icons/manifest.json">
 
 		<title>Tellum ⚌ Node</title>
+		<style>
+			.list-item {
+				color: white;
+				opacity: 0.9;
+				margin: 10px 1rem;
+				padding: 10px;
+				list-style-type: none;
+			}
+			ul {list-style-type: none; margin:0;}
+			main {position: relative;}
+		</style>
 	</head>
 
 	<body>
@@ -40,7 +51,7 @@
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script>
 			const server = 'https://tellum.fun/api.php/sounds/'
-		const list = document.getElementById('list')
+			const list = document.getElementById('list')
 			document.getElementById('fetch').addEventListener('click', () => {
 				axios.get(server + '?columns=id').then(response => {
 					// retrieve entire list
@@ -48,7 +59,59 @@
 					let selected = all[0][0]
 
 					all.forEach(function (item, index, all) {
-						list.appendChild('<li>')
+						let i = document.createElement('li')
+						i.classList = 'list-item'
+						let desc = document.createElement('p')
+						let listenbtn = document.createElement('button')
+						listenbtn.innerHTML = 'listen'
+
+						let base64audio = 'data:'
+						let randomAudio = 0
+
+						const dataURItoBlob = function (dataURI) {
+							// Split the input to get the mime-type and the data itself
+							dataURI = dataURI.split( ',' );
+
+							// First part contains data:audio/ogg;base64 from which we only need audio/ogg
+							var type = dataURI[ 0 ].split( ':' )[ 1 ].split( ';' )[ 0 ];
+
+							// Second part is the data itself and we decode it
+							var byteString = atob( dataURI[ 1 ] );
+							var byteStringLen = byteString.length;
+
+							// Create ArrayBuffer with the byte string and set the length to it
+							var ab = new ArrayBuffer( byteStringLen );
+
+							// Create a typed array out of the array buffer representing each character from as a 8-bit unsigned integer
+							var intArray = new Uint8Array( ab );
+							for ( var i = 0; i < byteStringLen; i++ ) {
+								intArray[ i ] = byteString.charCodeAt( i );
+							}
+
+							return new Blob( [ intArray ], {type: type} );
+						}
+
+						listenbtn.addEventListener('click', () => {
+							axios.get(server + all[index]).then(response => {
+								base64audio += response.data.sound_type + ';base64,' + response.data.sound;
+								// $('#source').text('Source: ' + base64audio);
+
+								let audio = document.createElement('audio');
+								document.body.appendChild(audio)
+								let audioURL = URL.createObjectURL(dataURItoBlob(base64audio));
+								// record.style.display = 'none';
+
+								audio.src = audioURL;
+								audio.load();
+								audio.autoplay = true;
+								audio.play()
+							})
+						})
+
+						desc.innerHTML = all[index] + '  - '
+						desc.appendChild(listenbtn)
+						i.appendChild(desc)
+						list.appendChild(i)
 					})
 				})
 			})

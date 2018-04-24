@@ -10,7 +10,8 @@
 'use strict'
 
 	// Environment
-	const server = 'https://tellum.fun/api.php/sounds/'
+	// const server = 'https://tellum.fun/api.php/sounds/'
+	const server = 'https://localhost/tellum/api.php/sounds/'
 	let isRecord = false
 	let location = ''
 	let sndsSent = 0
@@ -57,7 +58,7 @@
 			navigator.geolocation.getCurrentPosition(success, error)
 		} else {
 			console.log('Geolocation is not supported for this Browser/OS.')
-			meta.innerHTML = 'You are there'
+			meta.innerHTML = 'You are there<br>(Geolocation unavailable or denied.)'
 			preload()
 		}
 	}
@@ -126,7 +127,7 @@
 					}).then(response => {
 						console.log(response)
 						sndsSent += 1
-						listen.style.display = '';
+						listen.style.display = 'block';
 					})
 					.catch(error => {console.warn(error)})
 				}
@@ -332,11 +333,11 @@
 				base64audio += response.data.sound_type + ';base64,' + response.data.sound;
 				// $('#source').text('Source: ' + base64audio);
 
-				log.appendChild(document.createTextNode('Playing audio ID'));
+				log.appendChild(document.createTextNode('Playing audio ID #' + selected));
 
 				let audio = document.createElement('audio');
 				let audioURL = URL.createObjectURL(dataURItoBlob(base64audio));
-				record.style.display = 'none';
+				// record.style.display = 'none';
 
 				audio.src = audioURL
 				audio.load()
@@ -347,9 +348,9 @@
 			})
 		})
 		sndsSent -= 1
-		// if (sndsSent == 0) {
-		// 	listen.style.display = 'none';
-		// }
+		if (sndsSent == 0) {
+			// listen.style.display = 'none';
+		}
 	}
 
 	// info panel logic
