@@ -3,7 +3,7 @@
 	==
 	run the whole shabang with `$ gulp watch` in the project directory
 	install them all with
-	$ npm i -D gulp gulp-sass gulp-concat gulp-rename gulp-babel gulp-babel-minify babel-preset-env browser-sync 
+	$ npm i -D gulp gulp-sass gulp-concat gulp-rename gulp-babel gulp-babel-minify babel-preset-env browser-sync
 */
 
 const gulp = require('gulp')
@@ -61,15 +61,15 @@ gulp.task('scripts', function () {
 })
 
 // does browser live-reloading
-gulp.task('browserSync', () => 
-	browserSync.init({ 
+gulp.task('browserSync', () =>
+	browserSync.init({
 		server: { baseDir:"./public" },
-    https: true 
+    https: true
   })
 )
 
 // watches files for changes, adjust accordingly
-gulp.task('watch', ['browserSync', 'sass', 'scripts'], function () {
+gulp.task('watch', gulp.parallel(['browserSync', 'sass', 'scripts']), () => {
 	gulp.watch('scss/**/*.scss', ['sass'])
 	gulp.watch('js/**/*.js', ['scripts'])
 	// gulp.watch(path + project + assets + '/js/**/*.js', ['scripts'])
@@ -78,3 +78,5 @@ gulp.task('watch', ['browserSync', 'sass', 'scripts'], function () {
 
 // stop old version of gulp watch from running when you modify the gulpfile
 gulp.watch("gulpfile.js").on( "change", () => process.exit(0) )
+
+gulp.task('default', gulp.series(['watch']))
